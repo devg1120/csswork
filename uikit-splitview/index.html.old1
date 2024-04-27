@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Navbar - UIkit tests</title>
+    <script src="./test.js"></script>
+  </head>
+  <body>
+
+        <nav class="uk-navbar-container">
+            <div class="uk-container uk-container-expand">
+                <div uk-navbar>
+                    <div class="uk-navbar-left">
+
+                        <a class="uk-navbar-item uk-logo" href="#">Logo</a>
+
+                        <ul class="uk-navbar-nav">
+                            <li class="uk-active"><a href="#">Active</a></li>
+                            <li>
+                                <a href="#">Parent</a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-active"><a href="#">Active</a></li>
+                                        <li class="uk-parent">
+                                            <a href="#">Parent</a>
+                                            <ul class="uk-nav-sub">
+                                                <li><a href="#">Sub item</a></li>
+                                                <li><a href="#">Sub item</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="uk-nav-header">Header</li>
+                                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
+                                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="#">Item</a></li>
+                            <li><a href="#">Item</a></li>
+                        </ul>
+
+                        <div class="uk-navbar-item">
+                            <div>Some <a href="#">Link</a></div>
+                        </div>
+
+                        <div class="uk-navbar-item">
+                            <form action="javascript:void(0)">
+                                <input class="uk-input uk-form-width-small" type="text" placeholder="Input" aria-label="Input">
+                                <button class="uk-button uk-button-default">Button</button>
+				<button class="uk-button uk-button-default" uk-toggle="target: #sidebar" type="button">Toggle</button>
+				<button class="uk-button uk-button-default" uk-toggle="target: #r-sidebar" type="button">Toggle</button>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="uk-navbar-right">
+
+                        <ul class="uk-navbar-nav">
+                            <li class="uk-active"><a href="#">Active</a></li>
+                            <li>
+                                <a href="#">Parent</a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-active"><a href="#">Active</a></li>
+                                        <li class="uk-parent">
+                                            <a href="#">Parent</a>
+                                            <ul class="uk-nav-sub">
+                                                <li><a href="#">Sub item</a></li>
+                                                <li><a href="#">Sub item</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="uk-nav-header">Header</li>
+                                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
+                                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="#">Item</a></li>
+                        </ul>
+
+                        <a class="uk-navbar-toggle uk-navbar-toggle-animate" href uk-navbar-toggle-icon></a>
+                        <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !.uk-navbar; stretch: x; flip: false">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li class="uk-parent">
+                                    <a href="#">Parent</a>
+                                    <ul class="uk-nav-sub">
+                                        <li><a href="#">Sub item</a></li>
+                                        <li><a href="#">Sub item</a></li>
+                                    </ul>
+                                </li>
+                                <li class="uk-nav-header">Header</li>
+                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
+                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <script>
+
+            const {$, $$, addClass, on, removeClass, MouseTracker } = UIkit.util;
+            const tracker = new MouseTracker();
+            const el = $('#js-mousetracker');
+            const target = $('#js-mousetarget');
+            let interval;
+
+            on(el, 'mouseenter', () => {
+                tracker.init();
+                interval = setInterval(() => target.textContent = tracker.movesTo(target.parentNode) ? 'Moves to' : 'Does not move to');
+            });
+
+            on(el, 'mouseleave', () => {
+                tracker.cancel();
+                clearInterval(interval);
+            });
+
+            on('#js-dropdown-size-switcher', 'change', (e) => {
+                const options = $$('option', e.target).map(({value}) => value);
+                for (const el of $$('.uk-navbar-dropdown:not(.uk-navbar-dropdown-dropbar)')) {
+                    removeClass(el, options);
+                    addClass(el, e.target.value);
+                }
+            });
+
+            on('#js-dropbar-size-switcher', 'change', (e) => {
+                const options = $$('option', e.target).map(({value}) => value);
+                for (const el of $$('.uk-navbar-dropdown-dropbar')) {
+                    removeClass(el, options);
+                    addClass(el, e.target.value);
+                }
+            });
+
+        </script>
+    <div class="app">
+     <div class="header">ヘッダー</div>
+     <div data-flex-splitter-horizontal class="main">
+          <div id="sidebar" class="sidebar"></div>
+        <div role="separator" tabindex="1"></div>
+         <div  data-flex-splitter-vertical class="content">
+           <div class="flex-content">コンテンツ1</div>
+        <div role="separator" tabindex="1"></div>
+           <div class="fixed-content">コンテンツ2</div>
+         </div>
+        <div role="separator" tabindex="1"></div>
+         <div id="r-sidebar" class="r-sidebar"></div>
+      </div>
+     <div class="footer">footer</div>
+   </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
