@@ -1,0 +1,12 @@
+<script>
+  let count = 0
+  const increment = () => {
+    count += 1
+  }
+</script>
+
+                    <div>
+                        <button class="uk-button uk-button-default uk-margin" type="button" uk-toggle="target: +">Toggle HTML5 Video</button>
+                        <video src="https://yootheme.com/site/images/media/yootheme-pro.mp4" width="1920" height="1080" controls playsinline hidden uk-video></video>
+                    </div>
+
