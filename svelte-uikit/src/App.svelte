@@ -17,7 +17,7 @@ import Grid from './lib/Grid.svelte'
 import Param from './lib/Param.svelte'
 import Select from './lib/Select.svelte'
 import Tree from './lib/Tree.svelte'
-//import Sheet from './lib/Sheet.svelte'
+import Sheet from './lib/Sheet.svelte'
 //import Graph from './lib/svelte-cytoscape-demo/src/App.svelte'
 import Graph from './lib/Graph.svelte'
 import Ngraph from './lib/network_cytoscape.svelte'
@@ -43,6 +43,7 @@ import Ngraph from './lib/network_cytoscape.svelte'
             <div class="flex-content">
                 <ul uk-tab>
                     <li><a href="#">Card</a></li>
+                    <li><a href="#">Sheet</a></li>
                     <li><a href="#">Video</a></li>
                     <li><a href="#">Item</a></li>
                     <li><a href="#">Item</a></li>
@@ -51,7 +52,13 @@ import Ngraph from './lib/network_cytoscape.svelte'
                     <li><a href="#">Item</a></li>
                 </ul>
                 <div class="uk-switcher uk-margin">
+		    <!--
+                    <Sheet />
+		    -->
+		    
                     <Ngraph />
+                    <Sheet />
+		    
 		    <Video />
 		    <Panel />
 		    <Table />
@@ -62,8 +69,10 @@ import Ngraph from './lib/network_cytoscape.svelte'
             </div>
 	   
            <div role="separator" tabindex="1"></div>
--
-	      <Graph />
+
+	    <div class="flexd-content">
+	      <Card />
+	    </div>
 
 <!--
 	      <Graph />
