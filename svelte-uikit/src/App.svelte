@@ -18,9 +18,9 @@ import Param from './lib/Param.svelte'
 import Select from './lib/Select.svelte'
 import Tree from './lib/Tree.svelte'
 import Sheet from './lib/Sheet.svelte'
-//import Graph from './lib/svelte-cytoscape-demo/src/App.svelte'
 import Graph from './lib/Graph.svelte'
-import Ngraph from './lib/network_cytoscape.svelte'
+import OGraph from './lib/svelte-cytoscape-demo/src/App.svelte'
+import NGraph from './lib/network_cytoscape.svelte'
 
 </script>
 
@@ -42,7 +42,8 @@ import Ngraph from './lib/network_cytoscape.svelte'
 
             <div class="flex-content">
                 <ul uk-tab>
-                    <li><a href="#">Card</a></li>
+                    <li><a href="#">Ngraph</a></li>
+                    <li><a href="#">Graph</a></li>
                     <li><a href="#">Sheet</a></li>
                     <li><a href="#">Video</a></li>
                     <li><a href="#">Item</a></li>
@@ -56,7 +57,8 @@ import Ngraph from './lib/network_cytoscape.svelte'
                     <Sheet />
 		    -->
 		    
-                    <Ngraph />
+                    <NGraph />
+                    <Graph />
                     <Sheet />
 		    
 		    <Video />
@@ -70,9 +72,7 @@ import Ngraph from './lib/network_cytoscape.svelte'
 	   
            <div role="separator" tabindex="1"></div>
 
-	    <div class="flexd-content">
-	      <Card />
-	    </div>
+	      <OGraph />
 
 <!--
 	      <Graph />
@@ -154,7 +154,7 @@ main {
 }
 
 .fixed-content { 
-  height:48%;
+  height:200px;
   background-color: thistle;
   box-sizing: border-box;
   border: 1px solid darkmagenta;

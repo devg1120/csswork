@@ -1,7 +1,11 @@
+
+
 <script>
-  import Graph from './components/Graph.svelte'
-  import GraphNode from './components/GraphNode.svelte'
-  import GraphEdge from './components/GraphEdge.svelte'
+  import { onMount } from "svelte";
+
+  import Graph from './svelte-cytoscape-demo/src/components/Graph.svelte'
+  import GraphNode from './svelte-cytoscape-demo/src/components/GraphNode.svelte'
+  import GraphEdge from './svelte-cytoscape-demo/src/components/GraphEdge.svelte'
 
   const nodes = [
     { id: 'N1', label: 'Start' },
@@ -26,6 +30,12 @@
     { id: 'E9', source: 'N7', target: 'N7', label: '3' },
     { id: 'E10', source: 'N7', target: 'N8' }
   ]
+
+  onMount(() => {
+    console.log("コンポーネントが初めてマウントされました");
+  });
+
+
 </script>
 
 <Graph>
@@ -37,9 +47,3 @@
     <GraphEdge edge={edge}/>
   {/each}
 </Graph>
-
-<style>
-Graph {
-  height:100%;
-}
-</style>

@@ -39,3 +39,10 @@
     <slot></slot>
   {/if}
 </div>
+
+<style>
+.graph {
+  height: 100%;
+}
+</style>
+
